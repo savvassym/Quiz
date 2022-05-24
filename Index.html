@@ -4,17 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Quiz</title>
+    <title>My Quiz</title>
+    <style>
+        .container{
+            border: 3px solid black;
+            border-radius: 10px;
+            width: 60%;
+            padding: 20px;
+            display: none;
+        }
+        button{
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        Q1 What<br>
-        <input type="radio" name="question1">300<br>
-        <input type="radio" name="question1">400<br>
-        <input type="radio" name="question1">500<br>
-        <input type="radio" name="question1">700<br>
-
+        Q1: What is my Name?<hr>
+        <input type="radio" name="question1">Joe<br>
+        <input type="radio" name="question1">John<br>
+        <input type="radio" name="question1"id="correct1">George<br>
+        <input type="radio" name="question1">Jeff<br>
+        <button class="next" onclick="next(1)">NEXT</button>
     </div>
+
+    <div class="container">
+        Q2: Where we meet for the first time?<hr>
+        <input type="radio" name="question2" id="correct2">Park<br>
+        <input type="radio" name="question2">Bar<br>
+        <input type="radio" name="question2">Library<br>
+        <input type="radio" name="question2">Coffee Shop<br>
+        <button class="next" onclick="next(2)">NEXT</button>
+    </div>
+
+    <div class="container">
+        Q3: What year is the first time we met?<hr>
+        <input type="radio" name="question3">2016<br>
+        <input type="radio" name="question3">2017<br>
+        <input type="radio" name="question3">2018<br>
+        <input type="radio" name="question3" id="correct3">2019<br>
+        <button onclick="result()">SUBMIT</button>
+    </div>
+
+    <script>
+        //display the questiom
+        document.getElementsByClassName('container')[0].style.display="block";
+        //defining the next fuction
+        function next(id){
+            document.getElementsByClassName('container')[id-1].style.display="none";
+            document.getElementsByClassName('container')[id].style.display="block";
+        }
+        //results function
+        function result(){
+            var score = 0;
+            if (document.getElementById('correct1').checked){
+                score++;
+            }
+            if (document.getElementById('correct2').checked){
+                score++;
+            }
+            if (document.getElementById('correct3').checked){
+                score++;
+            }
+            alert("You don't know me very well: "+ score);
+        }
+    </script>
 
 </body>
 </html>
